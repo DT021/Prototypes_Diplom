@@ -1,0 +1,52 @@
+﻿.header {
+  background-color: darkslategray;
+  color: white;
+  padding: 5px;
+}
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 20%;
+}
+
+#table {
+  border: 1px solid black;
+}
+
+.map {
+  height: 90vh;
+  width: 80%;
+}
+
+.map__hint {
+  padding: 20px;
+  min-height: 55px;
+  min-width: 195px;
+  font-size: 20px;
+  line-height: 1;
+  color: #ffffff;
+  background-color: #f9b43b;
+  background-image: linear-gradient(
+    to top,
+    #f9b43b 0%,
+    #eb8c38 48%,
+    #f9b43b 74%,
+    #f9b43b 100%
+  );
+  border-radius: 20px;
+}
+
+.map__balloon {
+  padding: 10px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #bbb8b4;
+}
+
+.map__burger-img {
+  float: right;
+  height: 50px;
+  width: 50;
+}
