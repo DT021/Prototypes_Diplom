@@ -12,6 +12,7 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/general_style.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -27,9 +28,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Drone monitoring", "Monitoring", "Monitoring")</li>
+                 
+                    <li>@Html.ActionLink("Drone monitoring", "Index", "Monitoring")</li>
                     @*<li>@Html.ActionLink("Мониторинг2", "NewIndex", "Monitoring")</li>*@
                     @*<li><a href="https://localhost:44329/MapTest1.html">To Yandex Maps!</a></li>
                     <li><a href="https://localhost:44329/MapTest2.html">To Yandex Maps!</a></li>*@
