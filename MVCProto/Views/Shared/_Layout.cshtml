@@ -12,17 +12,12 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="@Url.Content("~/Content/general_style.css")" rel="stylesheet" type="text/css" />
+    @*<link href="@Url.Content("~/Content/general_style.css")" rel="stylesheet" type="text/css" />*@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <div class="navbar-header">              
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
@@ -30,7 +25,6 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                  
                     <li>@Html.ActionLink("Drone monitoring", "Index", "Monitoring")</li>
-                    @*<li>@Html.ActionLink("Мониторинг2", "NewIndex", "Monitoring")</li>*@
                     @*<li><a href="https://localhost:44329/MapTest1.html">To Yandex Maps!</a></li>
                     <li><a href="https://localhost:44329/MapTest2.html">To Yandex Maps!</a></li>*@
 

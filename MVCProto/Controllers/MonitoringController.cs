@@ -14,15 +14,6 @@ namespace MVCProto.Controllers
             return View();
         }
 
-        public ActionResult NewIndex()
-        {
-            return View();
-        }
-
-
-        public ActionResult Monitoring()
-        {
-            return View();
-        }
+        
     }
 }
