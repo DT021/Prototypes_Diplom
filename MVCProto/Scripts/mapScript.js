@@ -1,11 +1,12 @@
 ﻿
-alert("Connect!")
+
 
 ymaps.ready(function () {
     /**
      * An example implementation of a custom control based on inheritance from collection.Item.
      * The control displays the name of the object that is in the center of the map.
      */
+    alert(1);
     var map = new ymaps.Map("map", {
         center: [55.819543, 37.611619],
         zoom: 6,
