@@ -12,36 +12,39 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/scripts/script.js")
+    @*@Scripts.Render("~/scripts/script.js")*@
     <link href="@Url.Content("~/Content/main_style.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">              
+            <div class="navbar-header">
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                 
                     <li>@Html.ActionLink("Drone monitoring", "Index", "Monitoring")</li>
-                    @*<li><a href="https://localhost:44329/MapTest1.html">To Yandex Maps!</a></li>
-                    <li><a href="https://localhost:44329/MapTest2.html">To Yandex Maps!</a></li>*@
-
-
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+
         @RenderBody()
+
         <hr />
+
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>This is footer</p>
         </footer>
     </div>
 
-   
+
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript">
+    </script>
+    <script src="../../Scripts/script.js" type="text/javascript">
+    </script>
 </body>
 </html>

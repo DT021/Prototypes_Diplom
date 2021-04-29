@@ -25,6 +25,9 @@ namespace MVCProto
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            var YandecApiPath = "https://api-maps.yandex.ru/2.1/?lang=ru_RU";
+            //bundles.Add( new ScriptBundle().Include)
         }
     }
 }

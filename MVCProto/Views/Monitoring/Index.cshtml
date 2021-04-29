@@ -1,10 +1,17 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    @Scripts.Render("~/scripts/mapScript.js")
 }
 
-
+<link type="text/css" rel="stylesheet" href="../../Content/map_page_style.css" />
 <h2>Index</h2>
 <p>
     Put some description here
 </p>
+
+    
+<div id="map" style="width: 600px; height: 400px"></div>
+    
+
+<script src="Scripts/Map/MapTest1.js" type="text/javascript"></script>

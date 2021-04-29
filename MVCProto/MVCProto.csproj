@@ -145,9 +145,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\general_style.css" />
     <Content Include="Content\main_style.css" />
     <Content Include="Content\Map\normalize.css" />
+    <Content Include="Content\map_page_style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -160,6 +160,7 @@
     <Content Include="MapTest2.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\mapScript.js" />
     <Content Include="Scripts\Map\MapTest1.js" />
     <Content Include="Content\Map\Yandex_Maps_Styling.css" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -189,7 +190,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Monitoring\Index.cshtml" />
     <Content Include="Views\Monitoring\NewIndex.cshtml" />
-    <Content Include="Views\Monitoring\Monitoring.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
