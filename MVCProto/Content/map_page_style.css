@@ -1,3 +1,14 @@
-﻿body {
-    background-color: palegoldenrod;
+﻿html, body, #map {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.customControl {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+    max-width: 200px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }

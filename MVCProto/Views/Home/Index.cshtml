@@ -5,11 +5,7 @@
 <div class="jumbotron">
     <h1>Следим за дронами</h1>
     <p class="lead">Тут главная страница </p>
-    <button class="btn btn-success btn-lg">
-        Перейти к карте
-    </button>
-
-    @Html.ActionLink("Перейти к карте", "Index", "Monitoring")
-    @Html.ActionLink("не работает", "Index", "Monitoring", null, new { @style = "text-decoration: none" });
+    @Html.ActionLink("Перейти к карте", "Index", "Monitoring", new object { }, new { @class = "btn btn-success btn-lg" })
+    
 </div>
 
