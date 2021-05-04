@@ -1,15 +1,26 @@
 ﻿
 
+let button = document.querySelector(".btn");
 
-ymaps.ready(function () {
+
+    button.addEventListener("click", () => {
+        alert("Event happened");
+    })
+
+
+
+ymaps.ready(init);
+
+function init() {
+
+
     /**
      * An example implementation of a custom control based on inheritance from collection.Item.
      * The control displays the name of the object that is in the center of the map.
      */
-    alert(1);
     var map = new ymaps.Map("map", {
-        center: [55.819543, 37.611619],
-        zoom: 6,
+        center: [56.736506, 37.221947],
+        zoom: 17,
         controls: []
     }
     ),
@@ -36,15 +47,15 @@ ymaps.ready(function () {
             CustomControlClass.superclass.onRemoveFromMap.call(this, oldMap);
         },
 
-        _onGetChildElement: function (parentDomContainer) {
-            // Creating an HTML element with the text.
-            this._$content = $('<div class="customControl"></div>').appendTo(parentDomContainer);
-            this._mapEventGroup = this.getMap().events.group();
-            // Requesting data after changing the position of the map.
-            this._mapEventGroup.add('boundschange', this._createRequest, this);
-            // Immediately requesting the name of the place.
-            this._createRequest();
-        },
+        //_onGetChildElement: function (parentDomContainer) {
+        //    // Creating an HTML element with the text.
+        //    this._$content = $('<div class="customControl"></div>').appendTo(parentDomContainer);
+        //    this._mapEventGroup = this.getMap().events.group();
+        //    // Requesting data after changing the position of the map.
+        //    this._mapEventGroup.add('boundschange', this._createRequest, this);
+        //    // Immediately requesting the name of the place.
+        //    this._createRequest();
+        //},
 
         _createRequest: function () {
             var lastCenter = this._lastCenter = this.getMap().getCenter().join(',');
@@ -67,7 +78,7 @@ ymaps.ready(function () {
              * The data has been received from the server and now it must be displayed.
              * Description of the response in JSON format.
              */
-            var members = result.GeoObjectCollection.featureMember,
+            let members = result.GeoObjectCollection.featureMember,
                 geoObjectData = (members && members.length) ? members[0].GeoObject : null;
             if (geoObjectData) {
                 this._$content.text(geoObjectData.metaDataProperty.GeocoderMetaData.text);
@@ -75,7 +86,7 @@ ymaps.ready(function () {
         }
     });
 
-    var customControl = new CustomControlClass();
+    let customControl = new CustomControlClass();
     map.controls.add(customControl, {
         float: 'none',
         position: {
@@ -83,4 +94,11 @@ ymaps.ready(function () {
             left: 10
         }
     });
-});
+
+
+}
+
+
+//ymaps.ready(function () {
+    
+//});
