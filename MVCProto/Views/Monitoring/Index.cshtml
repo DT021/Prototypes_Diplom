@@ -9,15 +9,12 @@
 
 <div class=" map_content">
 
-    <h2>Index</h2>
-    <hr />
-    <div id="map" style="height: 700px;">
+    @*<h2>Index</h2>*@
+   @* <hr />*@
+    <div id="map">
         <div class="map_control">
-            <button class="btn btn-sm btn-warning">Button</button>
+            <button id="btn_toggle" class="btn btn-sm btn-warning">Скрыть</button>
             <div class="table-responsive ">
-
-
-
 
                 @*<table class="table">
             <tr>
@@ -42,11 +39,12 @@
             </tr>
         </table>*@
 
-
                 <table class="table">
                     <tr>
                         <th>Дрон</th>
+                        <th>Координаты</th>
                         <th>Описание</th>
+
 
                     </tr>
 
@@ -54,7 +52,9 @@
                      {
                     <tr>
                         <td>@drone.droneName</td>
+                        <td>@drone.X<br/>@drone.Y</td>
                         <td>@drone.droneDescription</td>
+                     
                     </tr>
 
                      }

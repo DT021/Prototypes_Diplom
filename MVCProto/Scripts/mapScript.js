@@ -1,11 +1,14 @@
 ﻿
 
-let button = document.querySelector(".btn");
+let button = document.querySelector("#btn_toggle");
+let mapcontrol = document.querySelector(".map_control");
+let table = document.querySelector(".table-responsive");
 
-
-    button.addEventListener("click", () => {
-        alert("Event happened");
-    })
+button.addEventListener("click", () => {
+    //alert("Event happened");
+    table.classList.toggle("d-none");
+    button.innerHTML = button.innerHTML === "Скрыть" ? "Раскрыть" : "Скрыть";
+});
 
 
 
@@ -22,7 +25,13 @@ function init() {
         center: [56.736506, 37.221947],
         zoom: 17,
         controls: []
-    }
+    }, {
+        // Зададим ограниченную область прямоугольником
+        restrictMapArea: [
+            [56.699118, 37.055495],
+            [56.788962, 37.395487]
+        ]
+    },
     ),
         // Creating a custom class.
         CustomControlClass = function (options) {
@@ -30,6 +39,7 @@ function init() {
             this._$content = null;
             this._geocoderDeferred = null;
         };
+
     // And inheriting it from the collection.Item.
     ymaps.util.augment(CustomControlClass, ymaps.collection.Item, {
         onAddToMap: function (map) {
@@ -96,9 +106,94 @@ function init() {
     });
 
 
-}
+    let coordArr = [
+        [56.736506, 37.221947],
+        [56.736842, 37.218743],
+        [56.737078, 37.223097]
+    ]
+
+    // Создаём макет содержимого.
+    MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+    );
+
+    for (let i = 0; i < 3; i++) {
+        myPlacemark = new ymaps.Placemark(coordArr[i], {
+            hintContent: 'Дрон',
+            balloonContent: 'Это дрон',
+            iconContent: (i+1).toString()
+        }, {
+            iconLayout: 'default#imageWithContent',
+            iconImageHref: '../img/drone.png',
+            iconImageSize: [48, 42],
+            iconImageOffset: [-24, -21],
+            iconContentOffset: [15, 15],
+            iconContentLayout: MyIconContentLayout
+        })
+
+        map.geoObjects
+            .add(myPlacemark);
+    }
+
+    //    myPlacemark = new ymaps.Placemark([56.736506, 37.221947], {
+    //        hintContent: 'Дрон',
+    //        balloonContent: 'Это красивая метка',
+    //        iconContent: '1'
+    //    }, {
+    //        // Опции.
+    //        // Необходимо указать данный тип макета.
+    //        iconLayout: 'default#image',
+    //        // Своё изображение иконки метки.
+    //        iconImageHref: '../img/drone.png',
+    //        // Размеры метки.
+    //        iconImageSize: [48, 42],
+    //        // Смещение левого верхнего угла иконки относительно
+    //        // её "ножки" (точки привязки).
+    //        iconImageOffset: [-24, -21]
+    //    }),
+
+    //    myPlacemarkWithContent = new ymaps.Placemark([56.736842, 37.218743], {
+    //        hintContent: 'Дрон',
+    //        balloonContent: 'А эта — новогодняя',
+    //        iconContent: '2'
+    //    }, {
+    //        // Опции.
+    //        // Необходимо указать данный тип макета.
+    //        iconLayout: 'default#imageWithContent',
+    //        iconImageHref: '../img/drone.png',
+    //        iconImageSize: [48, 42],
+    //        iconImageOffset: [-24, -21],
+    //        // Смещение слоя с содержимым относительно слоя с картинкой.
+    //        iconContentOffset: [15, 15],
+    //        // Макет содержимого.
+    //        iconContentLayout: MyIconContentLayout
+    //    }),
+
+    //    myPlacemarkWithContent2 = new ymaps.Placemark([56.737078, 37.223097], {
+    //        hintContent: 'Дрон',
+    //        balloonContent: 'Третий',
+    //        iconContent: '3'
+    //    }, {
+    //        // Опции.
+    //        // Необходимо указать данный тип макета.
+    //        iconLayout: 'default#imageWithContent',
+    //        iconImageHref: '../img/drone.png',
+    //        iconImageSize: [48, 42],
+    //        iconImageOffset: [-24, -21],
+    //        // Смещение слоя с содержимым относительно слоя с картинкой.
+    //        iconContentOffset: [15, 15],
+    //        // Макет содержимого.
+    //        iconContentLayout: MyIconContentLayout
+    //    });
+
+    //map.geoObjects
+    //    .add(myPlacemark)
+    //    .add(myPlacemarkWithContent)
+    //    .add(myPlacemarkWithContent2);
 
 
-//ymaps.ready(function () {
     
-//});
+
+
+} 
+

@@ -153,9 +153,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\burger.png" />
-    <Content Include="img\map-marker.png" />
-    <Content Include="img\sprite.png" />
     <Content Include="img\drone.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
