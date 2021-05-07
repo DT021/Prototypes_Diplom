@@ -1,13 +1,13 @@
 ﻿
 
-let button = document.querySelector("#btn_toggle");
+let button = $("#btn_toggle");
 let mapcontrol = document.querySelector(".map_control");
-let table = document.querySelector(".table-responsive");
+let table = $(".table-responsive");
 
-button.addEventListener("click", () => {
-    //alert("Event happened");
-    table.classList.toggle("d-none");
-    button.innerHTML = button.innerHTML === "Скрыть" ? "Раскрыть" : "Скрыть";
+button.click(() => {
+    //table.classList.toggle("d-none");
+    $(".table-responsive").toggle(400);
+    button.text(button.html() == "Скрыть" ? "Раскрыть" : "Скрыть");
 });
 
 

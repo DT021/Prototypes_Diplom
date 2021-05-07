@@ -24,7 +24,7 @@ namespace MVCProto
             id++;
         }
 
-        public Drone(double x, double y): base()
+        public Drone(double x, double y): this()
         {
             this.X = x;
             this.Y = y;
