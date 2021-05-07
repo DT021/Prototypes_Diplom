@@ -19,19 +19,16 @@
     
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
         <div class="container">
-            <div class="navbar-header">
-
-            </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Drone monitoring", "Index", "Monitoring")</li>
+                <ul class="navbar-nav mr-auto">
+                    <li class=" nav-item active">@Html.ActionLink("Home", "Index", "Home", new object { }, new { @class = "nav-link" })</li>
+                    <li class=" nav-item active">@Html.ActionLink("Drone monitoring", "Index", "Monitoring", new object { }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="container custom-container body-content" style="margin-top: 50px;">
 
