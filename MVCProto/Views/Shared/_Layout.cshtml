@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 
     @RenderSection("scripts", required: false)
     @RenderSection("Styles", required: false)
@@ -15,23 +15,48 @@
     @*@Scripts.Render("~/scripts/mapScript.js")*@
     @*<script src="~/Scripts/mapScript.js" type="text/javascript"></script>*@
     <link href="@Url.Content("~/Content/main_style.css")" rel="stylesheet" type="text/css" />
-   
-    
+
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
 
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Drone monitoring", "Index", "Monitoring")</li>
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Drone monitoring", "Index", "Monitoring")</li>
+        </div>*@
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container custom-container body-content">
+
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item ">
+                        @Html.ActionLink("Home", "Index", "Home", new object { }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item ">
+                        @Html.ActionLink("Drone monitoring", "Index", "Monitoring", new object { }, new { @class = "nav-link" })
+                    </li>
+                    @*<li class=" nav-item active">@Html.ActionLink("Chat", "Index", "Chat", new object { }, new { @class = "nav-link" })</li>*@
+
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="container custom-container body-content" style="margin-top: 50px;">
 
@@ -42,13 +67,13 @@
 
 
     <!-- Footer -->
-    <footer class="footer bg-dark text-uppercase">
+    <footer class="footer text-light">
         <div class="text-center p-3">
             © 2020 Copyright:
-            <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            <a class="alert-link text-light" href="https://mdbootstrap.com/">MDBootstrap.com</a>
         </div>
     </footer>
 
 
- </body>
+</body>
 </html>
