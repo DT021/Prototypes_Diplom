@@ -10,4 +10,10 @@ namespace MVCProto.Models
         public string ConnectionId { get; set; }
         public string Name { get; set; }
     }
+
+    public class Client
+    {
+        public string ConnectionId { get; set; }
+        public List<int> DroneList { get; set; }
+    }
 }

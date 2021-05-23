@@ -1,14 +1,4 @@
-﻿@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+﻿
     <h2>Чат-комната</h2>
 
     <div class="main">
@@ -21,7 +11,7 @@
             <div id="header"></div>
             <div id="inputForm">
                 <input type="text" id="message" />
-                <input type="button" id="sendmessage" value="Отправить" />
+                <input type="button" id="sendmessage" value="Подтвердить" />
             </div>
             <div id="chatroom"></div>
 
@@ -33,13 +23,4 @@
         <input id="username" type="hidden" />
     </div>
 
-    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
-    <!--Ссылка на библиотеку SignalR -->
-    <script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
-
-    <!--Ссылка на автоматически сгенерированный скрипт хаба SignalR -->
-    <script src="~/signalr/hubs"></script>
-    <script src="@Url.Content("~/signalr/hubs")"></script>
     <script src="~/Scripts/util.js"></script>
-</body>
-</html>

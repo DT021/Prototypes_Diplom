@@ -21,7 +21,7 @@
 
         <div class="container custom-container body-content">
 
-            <a class="navbar-brand" href="#">Navbar</a>
+            @*<a class="navbar-brand" href="#">Navbar</a>*@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,11 +32,27 @@
                     <li class="nav-item ">
                         @Html.ActionLink("Home", "Index", "Home", new object { }, new { @class = "nav-link" })
                     </li>
-                    <li class="nav-item ">
-                        @Html.ActionLink("Drone monitoring", "Index", "Monitoring", new object { }, new { @class = "nav-link" })
+                    
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Drone monitoring
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            @Html.ActionLink("Drone monitoring", "Index", "Monitoring", new object { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Drone monitoring 2", "Index2", "Monitoring", new object { }, new { @class = "dropdown-item" })
+
+                        </div>
                     </li>
+
+
                     <li class=" nav-item ">
                         @Html.ActionLink("Chat", "Index", "Chat", new object { }, new { @class = "nav-link" })
+                    </li>
+
+                    <li class=" nav-item ">
+                        @Html.ActionLink("Drone control panel", "DroneControl", "Chat", new object { }, new { @class = "nav-link" })
                     </li>
 
                 </ul>
@@ -56,10 +72,17 @@
     <footer class="footer text-light">
         <div class="text-center p-3">
             © 2020 Copyright:
-            <a class="alert-link text-light" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            <a class="alert-link  text-light" href="https://mdbootstrap.com/">MDBootstrap.com</a>
         </div>
     </footer>
 
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <!--Ссылка на библиотеку SignalR -->
+    <script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
+    <!--Ссылка на автоматически сгенерированный скрипт хаба SignalR -->
+    <script src="~/signalr/hubs"></script>
+    
 
 </body>
 </html>

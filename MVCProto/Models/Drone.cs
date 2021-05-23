@@ -8,27 +8,32 @@ namespace MVCProto
     public class Drone
     {
         public int droneId { get; set; }
-        public static int id = 1;
         public string droneName { get; set; }
-
         public double X { get; set; }
         public double Y { get; set; }
-
-    public string droneDescription { get; set; }
+        public string droneDescription { get; set; }
 
         public Drone()
         {   
-            this.droneId = id;
-            this.droneName = "Drone "+ id.ToString() ;
-            this.droneDescription = "Some Description";
-            id++;
+            this.droneName = "Drone";
+            this.droneDescription = "Some Description";          
         }
 
-        public Drone(double x, double y): this()
+        public Drone(double x, double y) : this()
         {
             this.X = x;
             this.Y = y;
         }
+
+
+        public Drone(int id, double x, double y) : this(x, y)
+        {         
+            this.droneId = id;
+            this.droneName = "Drone" + droneId.ToString();
+        }
+
+
+
 
     }
 }
