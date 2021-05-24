@@ -8,17 +8,11 @@ $(function () {
 
     $.connection.hub.start()
         .done(function () {
-            droneHub.server.announce("Connected!");
+
             droneHub.server.connect("1;2;3");
 
         })
-        .fail(function () { alert("SOMETHING WENT WRONG!") })
 
-
-
-    droneHub.client.announce = function (message) {
-        console.log(message);
-    }
 
     droneHub.client.sendId = function (id) {
         let transValue;

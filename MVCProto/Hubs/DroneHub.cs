@@ -26,7 +26,6 @@ namespace MVCProto.Hubs
         {
             var id = Context.ConnectionId;
 
-
             if (!clients.Any(x => x.ConnectionId == id))
             {
                 string[] sp = profile.Split(';');
@@ -47,5 +46,30 @@ namespace MVCProto.Hubs
             }
 
         }
+
+
+        private readonly DroneTicker _droneTicker;
+
+        public DroneHub(DroneTicker droneTicker)
+        {
+            _droneTicker = droneTicker;
+        }
+
+
+        public DroneHub() : this(DroneTicker.Instance)
+        {
+
+        }
+
+
+
+        public IEnumerable<Drone> GetAllDrones()
+        {
+            return _droneTicker.GetAllDrones();
+        }
+
+
+
+
     }
 }

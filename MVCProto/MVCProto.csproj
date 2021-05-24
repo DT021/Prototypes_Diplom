@@ -135,6 +135,7 @@
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitoringController.cs" />
+    <Compile Include="DroneTicker.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Hubs\DroneHub.cs" />
     <Compile Include="Models\Drone.cs" />
