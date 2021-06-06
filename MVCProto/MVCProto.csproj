@@ -135,9 +135,9 @@
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitoringController.cs" />
-    <Compile Include="DroneTicker.cs" />
+    <Compile Include="DataTicker.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
-    <Compile Include="Hubs\DroneHub.cs" />
+    <Compile Include="Hubs\DataSenderHub.cs" />
     <Compile Include="Models\Drone.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -273,6 +273,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\util.js" />
+    <Content Include="Scripts\UpdatePositions.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -299,6 +300,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Monitoring\Index2.cshtml" />
     <Content Include="Views\Chat\DroneControl.cshtml" />
+    <Content Include="Views\Monitoring\Ticker.cshtml" />
+    <Content Include="Views\Monitoring\Ticker2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

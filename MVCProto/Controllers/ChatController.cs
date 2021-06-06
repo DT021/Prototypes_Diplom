@@ -28,10 +28,7 @@ namespace MVCProto.Controllers
         }
 
 
-        // Save our hub context so we can easily use it 
-        // to send to its connected clients
-        private readonly TimeSpan BroadcastInterval = TimeSpan.FromMilliseconds(40);
-        private readonly IHubContext _hubContext;
+        
 
         public ActionResult UpdateId(int id)
         {

@@ -40,8 +40,10 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                            @Html.ActionLink("Drone monitoring", "Index", "Monitoring", new object { }, new { @class = "dropdown-item" })
-                            @Html.ActionLink("Drone monitoring 2", "Index2", "Monitoring", new object { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Drone monitoring", "Index", "Monitoring", new object { }, new { @class = " disabled dropdown-item" })
+                            @Html.ActionLink("Drone monitoring 2", "Index2", "Monitoring", new object { }, new { @class = " disabled dropdown-item" })
+                            @Html.ActionLink("Ticker", "Ticker", "Monitoring", new object { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Ticker2", "Ticker2", "Monitoring", new object { }, new { @class = "dropdown-item" })
 
                         </div>
                     </li>
@@ -71,7 +73,7 @@
     <!-- Footer -->
     <footer class="footer text-light">
         <div class="text-center p-3">
-            © 2020 Copyright:
+            @DateTime.Now.Year Copyright:
             <a class="alert-link  text-light" href="https://mdbootstrap.com/">MDBootstrap.com</a>
         </div>
     </footer>
