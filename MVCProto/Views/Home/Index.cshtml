@@ -1,18 +1,22 @@
-﻿@{
+﻿
+
+@{
         ViewBag.Title = "Home Page";
     }
 
-    <div class="jumbotron">
-        <h1>Следим за дронами</h1>
-        <p class="lead">Тут главная страница </p>
-        @Html.ActionLink("Перейти к карте", "Index", "Monitoring", new object { }, new { @class = "btn btn-success btn-lg" })
-
+<div class=" custom container  body-content">
+ 
+    <div class="mt-5 p-5 bg-dark">
+        <h1 class="h1 mb-3 text-light">Мониторинг роев БПЛА</h1>
+        @Html.ActionLink("Перейти к карте", "Ticker", "Monitoring", new object { }, new { @class = "btn btn-success btn-lg" })
     </div>
+    
 
-    @if (ViewBag.id != null) {
+    @if (ViewBag.id != null)
+    {
 
-        <h2> Id: @ViewBag.id</h2>    
-     }
+        <h2> Id: @ViewBag.id</h2>
+    }
 
-
+</div>
 

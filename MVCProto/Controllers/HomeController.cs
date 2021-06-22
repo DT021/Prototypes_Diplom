@@ -13,8 +13,5 @@ namespace MVCProto.Controllers
             return View();
         }
 
-       
-
-
     }
 }

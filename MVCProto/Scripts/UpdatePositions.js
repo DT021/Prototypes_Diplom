@@ -1,4 +1,21 @@
-﻿
+﻿let markers = []; //Список всех маркеров на карте
+let myMap;   //Ссылка на карту для глобальнго доступа
+let initialCoordinates = []; // стартовые координаты маркеров
+
+let rows = $("#positionDiv div");
+
+
+//Получение случайного целого числа от 0 до max-1
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+//Свернуть, развернуть блок с координатами
+
+function toggleView() {
+    $(".table-responsive").toggle(400);
+    $("#btn_toggle").text($("#btn_toggle").html() == "Скрыть" ? "Раскрыть" : "Скрыть");
+}
 
 
 // A simple templating method for replacing placeholders enclosed in curly braces.
@@ -15,76 +32,105 @@ if (!String.prototype.supplant) {
 
 $(function () {
 
-    var phub = $.connection.dataSource; // the generated client-side hub proxy
+    var phub = $.connection.dataSource;
+
+
+
+    // the generated client-side hub proxy
+
+    
+    $("#btn_toggle").click(() => {
+        
+        //var currMarker = markers[0];
+        //let rnd = getRandomInt(rndCoords.length); //0,1,2
+        //console.log(rnd);
+        //newCoords = rndCoords[rnd];
+        //currMarker.geometry.setCoordinates(newCoords);
+        //markers[0] = currMarker;
+        
+        toggleView();
+        
+
+    });
 
     function init() {
         phub.server.getInitial().done(function (ls) {
-            //console.log(ls);
-            for (var s in ls)                             
-                $('#' + ls[s].split(/(ID[0-9]+)/)[1]).html(ls[s]);
-            
-
+            console.log("ls = ",ls);
+            for (var s in ls)         
+                $('#' + ls[s].split(/(ID_[0-9]+[0-2]?)/)[1]).html(ls[s]);                     
             ymaps.ready(initMap);
         })
 
         var group = $("#positionDiv").attr("active");
-        var ids = group.split(';');
-        for (var id in ids)
-            $('#' + ids[id]).addClass('font-weight-bold');
+        console.log("group = ", group);
+        var ids = group.split(';');       
+        for (var id in ids) {
+            $('#' + ids[id]).addClass('font-weight-bold text-success');
+        }          
         phub.server.joinGroup(group);
         
     }
 
     // Add a client-side hub method that the server will call
+
+
+
     phub.client.updatePositions = function (posList) {
-        $.connection.hub.log(posList.length);
-        for (var s in posList)
-            $('#' + posList[s].split(/(ID[0-9]+)/)[1]).html(posList[s]);
+       
+        $.connection.hub.log("Число обновленных позиций:", posList.length);
+        //console.log("Poslist = ", posList);
+        
+     
+        //for (var s in posList) {
+        //    let id = parseInt(posList[s].split(/ID_/)[1])
+        //    console.log(id)
+        //    let currMarker = markers[id - 1];
+            
+        //    $('#' + posList[s].split(/(ID_[0-9]+[0-2]?)/)[1]).html(posList[s]);        
+        //    let coordX = parseFloat(posList[s].split("; ")[1].replace(",", "."));
+        //    let coordY = parseFloat(posList[s].split("; ")[2].replace(",", "."));
+        //    console.log(coordX, coordY);      
+        //    currMarker.geometry.setCoordinates([coordX, coordY]);
+        //    markers[id-1] = currMarker;               
+        //}                  
     }
 
+
     // Start the connection
-    $.connection.hub.logging = true;
+    //$.connection.hub.logging = true;
     $.connection.hub.start().done(init);
-
-
-
-   
 
 });
 
 
 
-
-
-
-
-
+//=============================MAP API======================================================
 
 function initMap() {
 
+    //Заполнение массива начальных координат
+    for (let row of rows) {
+        initialCoordinates.push([
+            parseFloat(row.innerHTML.split("; ")[1].replace(",", ".")),
+            parseFloat(row.innerHTML.split("; ")[2].replace(",", "."))
+        ])
+    }
 
-    /**
-     * An example implementation of a custom control based on inheritance from collection.Item.
-     * The control displays the name of the object that is in the center of the map.
-     */
-    var map = new ymaps.Map("map", {
+    //Создание карты
+    let map = new ymaps.Map("map", {
         center: [56.736506, 37.221947],
         zoom: 16,
         controls: []
-    }, {
-        // Зададим ограниченную область прямоугольником
-        restrictMapArea: [
-            [56.699118, 37.055495],
-            [56.788962, 37.395487]
-        ]
-    },
-    ),
-        // Creating a custom class.
-        CustomControlClass = function (options) {
-            CustomControlClass.superclass.constructor.call(this, options);
-            this._$content = null;
-            this._geocoderDeferred = null;
-        };
+    });
+        
+    myMap = map; //Создание ссылки на карту для доступа извне
+
+
+    let CustomControlClass = function (options) {
+        CustomControlClass.superclass.constructor.call(this, options);
+        this._$content = null;
+        this._geocoderDeferred = null;
+    };
 
     // And inheriting it from the collection.Item.
     ymaps.util.augment(CustomControlClass, ymaps.collection.Item, {
@@ -136,13 +182,13 @@ function initMap() {
 
     let customControl = new CustomControlClass();
 
-    map.controls.add(customControl, {
-        float: 'none',
-        position: {
-            top: 10,
-            left: 10
-        }
-    });
+    //map.controls.add(customControl, {
+    //    float: 'none',
+    //    position: {
+    //        top: 10,
+    //        left: 10
+    //    }
+    //});
 
     // Создаём макет содержимого.
     MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
@@ -150,20 +196,9 @@ function initMap() {
     );
 
 
-    //let rows = $(".font-weight-bold");
-    let rows = $("#positionDiv div");
-    let coordinates = []
-    for (let row of rows) {
-        coordinates.push([
-            parseFloat( row.innerHTML.split("; ")[1].replace(",", ".")),
-            parseFloat(row.innerHTML.split("; ")[2].replace(",", "."))
-        ])
-        
-    }
-    console.log(coordinates);
-
-    for (let i = 0; i < coordinates.length; i++) {
-        myPlacemark = new ymaps.Placemark(coordinates[i], {
+    //Создание и добавление маркеров по координатам
+    for (let i = 0; i < initialCoordinates.length; i++) {
+        myPlacemark = new ymaps.Placemark(initialCoordinates[i], {
             hintContent: 'Drone',
             balloonContent: 'Drone content description',
             iconContent: (i + 1).toString()
@@ -176,12 +211,12 @@ function initMap() {
             iconContentLayout: MyIconContentLayout
         })
 
-        map.geoObjects
-            .add(myPlacemark);
-        console.log(coordinates[i])
+        map.geoObjects.add(myPlacemark);
+        markers.push(myPlacemark);
     }
+   
 
-    // Добавляем отображение координат
+    //Отображение координат
     map.events.add('click', function (e) {
         if (!map.balloon.isOpen()) {
             var coords = e.get('coords');
